@@ -1,0 +1,10 @@
+{"list":[
+{"_t":"LanguageEN_USConfig","_id":1,"Str":"string not found"},
+{"_t":"LanguageEN_USConfig","_id":2,"Str":"Animal Chess"},
+{"_t":"LanguageEN_USConfig","_id":3,"Str":"Chinese Chess"},
+{"_t":"LanguageEN_USConfig","_id":4,"Str":"Chess"},
+{"_t":"LanguageEN_USConfig","_id":5,"Str":"International Checkers"},
+{"_t":"LanguageEN_USConfig","_id":6,"Str":"Flight chess"},
+{"_t":"LanguageEN_USConfig","_id":7,"Str":"Go"},
+{"_t":"LanguageEN_USConfig","_id":8,"Str":"Gomoku"},
+]}

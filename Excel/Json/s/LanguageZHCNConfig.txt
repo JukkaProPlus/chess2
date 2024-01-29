@@ -1,0 +1,10 @@
+{"list":[
+{"_t":"LanguageZHCNConfig","_id":1,"Str":"未找到字符串"},
+{"_t":"LanguageZHCNConfig","_id":2,"Str":"斗兽棋"},
+{"_t":"LanguageZHCNConfig","_id":3,"Str":"中国象棋"},
+{"_t":"LanguageZHCNConfig","_id":4,"Str":"国际象棋"},
+{"_t":"LanguageZHCNConfig","_id":5,"Str":"跳棋"},
+{"_t":"LanguageZHCNConfig","_id":6,"Str":"飞行棋"},
+{"_t":"LanguageZHCNConfig","_id":7,"Str":"围棋"},
+{"_t":"LanguageZHCNConfig","_id":8,"Str":"五子棋"},
+]}
