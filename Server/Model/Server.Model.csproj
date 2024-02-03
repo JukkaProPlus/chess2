@@ -34,6 +34,14 @@
       <Link>Demo\Bag\BagComponent.cs</Link>
     </Compile>
 
+    <Compile Include="..\..\Unity\Codes\Model\Demo\DouShouQi\DouShouQiBoardComponent.cs">
+      <Link>Demo\DouShouQi\DouShouQiBoardComponent.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Codes\Model\Demo\DouShouQi\DouShouQIPiece.cs">
+      <Link>Demo\DouShouQi\DouShouQIPiece.cs</Link>
+    </Compile>
+
     <Compile Include="..\..\Unity\Codes\Model\Demo\Euqipment\EquipmentsComponent.cs">
       <Link>Demo\Equipment\EquipmentsComponent.cs</Link>
     </Compile>
@@ -74,6 +82,14 @@
       <Link>Demo\LanguageEnum.cs</Link>
     </Compile>
 
+    <Compile Include="..\..\Unity\Codes\Model\Demo\Object\ISelectablePiece.cs">
+      <Link>Demo\Object\ISelectablePiece.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Codes\Model\Demo\PieceStateEnum.cs">
+      <Link>Demo\PieceStateEnum.cs</Link>
+    </Compile>
+
     <Compile Include="..\..\Unity\Codes\Model\Demo\Rank\RankInfo.cs">
       <Link>Demo\Rank\RankInfo.cs</Link>
     </Compile>
@@ -96,6 +112,10 @@
 
     <Compile Include="..\..\Unity\Codes\Model\Demo\Unit\UnitType.cs">
       <Link>Demo\Unit\UnitType.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Codes\Model\Generate\ConfigPartial\DouShouQiPieceConfigPartial.cs">
+      <Link>Generate\ConfigPartial\DouShouQiPieceConfigPartial.cs</Link>
     </Compile>
 
     <Compile Include="..\..\Unity\Codes\Model\Module\Actor\IActorChatInfoMessage.cs">

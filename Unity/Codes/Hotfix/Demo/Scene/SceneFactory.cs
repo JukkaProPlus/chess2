@@ -20,6 +20,7 @@ namespace ET
             zoneScene.AddComponent<RankComponent>();
             zoneScene.AddComponent<ChatComponent>();
             zoneScene.AddComponent<TipComponent>();
+            
 
             Game.EventSystem.Publish(new EventType.AfterCreateZoneScene() {ZoneScene = zoneScene});
             return zoneScene;

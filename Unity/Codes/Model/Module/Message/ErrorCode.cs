@@ -102,5 +102,11 @@ namespace ET
         public const int ERR_TaskRewarded  = 200051;
         
         public const int ERR_ChatMessageEmpty  = 200052;
+
+        public const int ERR_DouShouQiLobbyFull = 200053;
+        public const int ERR_DouShouQiRoomNotExist = 200054;
+        public const int ERR_DouShouQiRoomIsFull = 200055;
+        public const int ERR_DouShouQiCurOutside = 200056;
+        public const int ERR_DouShouQiNoOpponent = 200057;
     }
 }

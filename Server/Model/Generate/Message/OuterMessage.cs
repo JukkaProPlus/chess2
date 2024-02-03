@@ -1434,4 +1434,263 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(M2C_EnterDouShouQiRoom))]
+	[Message(OuterOpcode.C2M_EnterDouShouQiRoom)]
+	[ProtoContract]
+	public partial class C2M_EnterDouShouQiRoom: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int RoomId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.DouShouQiPieceProto)]
+	[ProtoContract]
+	public partial class DouShouQiPieceProto: Object
+	{
+		[ProtoMember(1)]
+		public int PieceId { get; set; }
+
+		[ProtoMember(2)]
+		public int x { get; set; }
+
+		[ProtoMember(3)]
+		public int y { get; set; }
+
+		[ProtoMember(4)]
+		public long OwnerInstanceId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.DouShouQiBoardProto)]
+	[ProtoContract]
+	public partial class DouShouQiBoardProto: Object
+	{
+		[ProtoMember(1)]
+		public int roomID { get; set; }
+
+		[ProtoMember(2)]
+		public long playerAID { get; set; }
+
+		[ProtoMember(3)]
+		public long playerBID { get; set; }
+
+		[ProtoMember(4)]
+		public bool playerAReady { get; set; }
+
+		[ProtoMember(5)]
+		public bool playerBReady { get; set; }
+
+		[ProtoMember(6)]
+		public long curTurnPlayerID { get; set; }
+
+		[ProtoMember(7)]
+		public List<DouShouQiPieceProto> Pieces = new List<DouShouQiPieceProto>();
+
+	}
+
+	[Message(OuterOpcode.M2C_EnterDouShouQiRoom)]
+	[ProtoContract]
+	public partial class M2C_EnterDouShouQiRoom: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public DouShouQiBoardProto Board { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_LeaveDouShouQiRoom))]
+	[Message(OuterOpcode.C2M_LeaveDouShouQiRoom)]
+	[ProtoContract]
+	public partial class C2M_LeaveDouShouQiRoom: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_LeaveDouShouQiRoom)]
+	[ProtoContract]
+	public partial class M2C_LeaveDouShouQiRoom: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_DouShouQiBegin)]
+	[ProtoContract]
+	public partial class M2C_DouShouQiBegin: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public DouShouQiBoardProto Board { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_Prepare))]
+	[Message(OuterOpcode.C2M_Prepare)]
+	[ProtoContract]
+	public partial class C2M_Prepare: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public bool IsPrepare { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_Prepare)]
+	[ProtoContract]
+	public partial class M2C_Prepare: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_PrepareNotice)]
+	[ProtoContract]
+	public partial class M2C_PrepareNotice: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public long ReadyPlayerId { get; set; }
+
+		[ProtoMember(2)]
+		public bool isPrepare { get; set; }
+
+	}
+
+// message C2M_PrepareNotice // IActorLocationResponse
+// {
+// 	int32 RpcId = 90;
+// 	int32 Error = 91;
+// 	string Message = 92;
+// }
+	[ResponseType(nameof(M2C_MovePiece))]
+	[Message(OuterOpcode.C2M_MovePiece)]
+	[ProtoContract]
+	public partial class C2M_MovePiece: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int sourceX { get; set; }
+
+		[ProtoMember(2)]
+		public int sourceY { get; set; }
+
+		[ProtoMember(3)]
+		public int destX { get; set; }
+
+		[ProtoMember(4)]
+		public int destY { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_MovePiece)]
+	[ProtoContract]
+	public partial class M2C_MovePiece: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_PlayerApplyPeace))]
+	[Message(OuterOpcode.C2M_PlayerApplyPeace)]
+	[ProtoContract]
+	public partial class C2M_PlayerApplyPeace: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_PlayerApplyPeace)]
+	[ProtoContract]
+	public partial class M2C_PlayerApplyPeace: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_AskAgreePeace)]
+	[ProtoContract]
+	public partial class M2C_AskAgreePeace: Object, IActorMessage
+	{
+// int32 RpcId = 90;
+	}
+
+// message C2M_AskAgreePeace	// IActorLocationResponse
+// {
+// 	int32 RpcId = 90;
+// 	int32 Error = 91;
+// 	string Message = 92;
+// }
+	[ResponseType(nameof(M2C_ReplyPeaceApply))]
+	[Message(OuterOpcode.C2M_ReplyPeaceApply)]
+	[ProtoContract]
+	public partial class C2M_ReplyPeaceApply: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public bool IsAgree { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_ReplyPeaceApply)]
+	[ProtoContract]
+	public partial class M2C_ReplyPeaceApply: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
 }

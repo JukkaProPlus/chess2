@@ -746,3 +746,135 @@ message Chat2C_NoticeChatInfo // IActorMessage
 	string Name = 1;
 	string ChatMessage = 2;
 }
+
+//ResponseType M2C_EnterDouShouQiRoom
+message C2M_EnterDouShouQiRoom	// IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int32 RoomId = 1;
+}
+
+message DouShouQiPieceProto
+{
+	int32 PieceId = 1;
+	int32 x = 2;
+	int32 y = 3;
+	int64 OwnerInstanceId = 4;
+}
+message DouShouQiBoardProto
+{
+	int32 roomID = 1;
+	int64 playerAID = 2;
+	int64 playerBID = 3;
+	bool playerAReady = 4;
+	bool playerBReady = 5;
+	int64 curTurnPlayerID = 6;
+	repeated DouShouQiPieceProto Pieces = 7;
+}
+
+message M2C_EnterDouShouQiRoom // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	DouShouQiBoardProto Board = 1;
+}
+//ResponseType M2C_LeaveDouShouQiRoom
+message C2M_LeaveDouShouQiRoom // IActorLocationRequest
+{
+	int32 RpcId = 90;
+}
+message M2C_LeaveDouShouQiRoom // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message M2C_DouShouQiBegin	// IActorMessage
+{
+	DouShouQiBoardProto Board = 1;
+}
+
+//ResponseType M2C_Prepare
+message C2M_Prepare	// IActorLocationRequest
+{
+	int32 RpcId = 90;
+	bool IsPrepare = 1;
+}
+message M2C_Prepare	// IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message M2C_PrepareNotice // IActorMessage
+{
+	long ReadyPlayerId = 1;
+	bool isPrepare = 2;
+}
+// message C2M_PrepareNotice // IActorLocationResponse
+// {
+// 	int32 RpcId = 90;
+// 	int32 Error = 91;
+// 	string Message = 92;
+// }
+
+//ResponseType M2C_MovePiece
+message C2M_MovePiece	// IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int32 sourceX = 1;
+	int32 sourceY = 2;
+	int32 destX = 3;
+	int32 destY = 4;
+}
+
+message M2C_MovePiece 	// IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType M2C_PlayerApplyPeace
+message C2M_PlayerApplyPeace	// IActorLocationRequest
+{
+	int32 RpcId = 90;
+}
+
+message M2C_PlayerApplyPeace	// IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message M2C_AskAgreePeace	// IActorMessage
+{
+	// int32 RpcId = 90;
+}
+// message C2M_AskAgreePeace	// IActorLocationResponse
+// {
+// 	int32 RpcId = 90;
+// 	int32 Error = 91;
+// 	string Message = 92;
+// }
+
+//ResponseType M2C_ReplyPeaceApply
+message C2M_ReplyPeaceApply	// IActorLocationRequest
+{
+	int32 RpcId = 90;
+	bool IsAgree = 1;
+}
+
+message M2C_ReplyPeaceApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+
+

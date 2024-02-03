@@ -8,3 +8,18 @@
 Go
 
 Gomoku
+	Elephant
+
+Lion
+	Tiger
+Leopard
+Wolf
+Dog
+Cat
+	Mouse
+)%Not one's own piece, cannot be chosen
+-)Not one's own piece, cannot be deselected
+Prepare
+Cancel Prepare
+Prepared
+Not Prepare

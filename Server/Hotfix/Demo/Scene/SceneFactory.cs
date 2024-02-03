@@ -33,7 +33,7 @@ namespace ET
                 case SceneType.Map:
                     scene.AddComponent<UnitComponent>();
                     scene.AddComponent<AOIManagerComponent>();
-                  
+                    scene.AddComponent<DouShouQiComponent>();                  
                     break;
                 case SceneType.Location:
                     scene.AddComponent<LocationComponent>();

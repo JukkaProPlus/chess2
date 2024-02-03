@@ -92,5 +92,22 @@ namespace ET
 		 public const ushort C2Chat_SendChatInfo = 10089;
 		 public const ushort Chat2C_SendChatInfo = 10090;
 		 public const ushort Chat2C_NoticeChatInfo = 10091;
+		 public const ushort C2M_EnterDouShouQiRoom = 10092;
+		 public const ushort DouShouQiPieceProto = 10093;
+		 public const ushort DouShouQiBoardProto = 10094;
+		 public const ushort M2C_EnterDouShouQiRoom = 10095;
+		 public const ushort C2M_LeaveDouShouQiRoom = 10096;
+		 public const ushort M2C_LeaveDouShouQiRoom = 10097;
+		 public const ushort M2C_DouShouQiBegin = 10098;
+		 public const ushort C2M_Prepare = 10099;
+		 public const ushort M2C_Prepare = 10100;
+		 public const ushort M2C_PrepareNotice = 10101;
+		 public const ushort C2M_MovePiece = 10102;
+		 public const ushort M2C_MovePiece = 10103;
+		 public const ushort C2M_PlayerApplyPeace = 10104;
+		 public const ushort M2C_PlayerApplyPeace = 10105;
+		 public const ushort M2C_AskAgreePeace = 10106;
+		 public const ushort C2M_ReplyPeaceApply = 10107;
+		 public const ushort M2C_ReplyPeaceApply = 10108;
 	}
 }

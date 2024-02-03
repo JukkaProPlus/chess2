@@ -22,6 +22,12 @@
     <Compile Include="..\..\Unity\Codes\Hotfix\Demo\Adventure\DamageCalcuateHelper.cs">
       <Link>Demo\Adventure\DamageCalcuateHelper.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Codes\Hotfix\Demo\DouShouQi\DouShouQiBoardComponentSystem.cs">
+      <Link>Demo\DouShouQi\DouShouQiBoardComponentSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Codes\Hotfix\Demo\DouShouQi\DouShouQiPieceSystem.cs">
+      <Link>Demo\DouShouQi\DouShouQiPieceSystem.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Codes\Hotfix\Demo\I18n\LanguageHelper.cs">
       <Link>Demo\I18n\LanguageHelper.cs</Link>
     </Compile>

@@ -80,5 +80,10 @@ namespace ET
 			public Unit Unit;
 			public int  LevelId;
 		}
+		public struct DouShouQiPlayerPrepare
+		{
+			public Unit Unit;
+			public int roomID;
+		}
 	}
 }

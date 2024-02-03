@@ -1,0 +1,10 @@
+{"list":[
+{"_t":"DouShouQiPieceConfig","_id":1,"FoodIds":[1,2,3,4,5,6,7],"Name":9},
+{"_t":"DouShouQiPieceConfig","_id":2,"FoodIds":[2,3,4,5,6,7,8],"Name":10},
+{"_t":"DouShouQiPieceConfig","_id":3,"FoodIds":[3,4,5,6,7,8],"Name":11},
+{"_t":"DouShouQiPieceConfig","_id":4,"FoodIds":[4,5,6,7,8],"Name":12},
+{"_t":"DouShouQiPieceConfig","_id":5,"FoodIds":[5,6,7,8,],"Name":13},
+{"_t":"DouShouQiPieceConfig","_id":6,"FoodIds":[6,7,8],"Name":14},
+{"_t":"DouShouQiPieceConfig","_id":7,"FoodIds":[7,8,],"Name":15},
+{"_t":"DouShouQiPieceConfig","_id":8,"FoodIds":[8,1],"Name":16},
+]}

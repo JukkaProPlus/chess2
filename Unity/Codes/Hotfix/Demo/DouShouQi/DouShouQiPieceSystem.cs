@@ -1,4 +1,4 @@
-﻿namespace ET.DouShouQi
+﻿namespace ET
 {
     public class DouShouQiPieceAwakeSystem : AwakeSystem<DouShouQIPiece, long, int, int, int>
     {
@@ -55,6 +55,25 @@
         {
             self.State = PieceStateEnum.Unselected;
             return true;
+        }
+        public static void FromMessage(this DouShouQIPiece self, DouShouQiPieceProto douShouQiPieceProto)
+        {
+            // self.Id = douShouQiPieceProto.Id;
+            self.OwnerInstanceId = douShouQiPieceProto.OwnerInstanceId;
+            self.PieceId = douShouQiPieceProto.PieceId;
+            self.X = douShouQiPieceProto.x;
+            self.Y = douShouQiPieceProto.y;
+            self.State = PieceStateEnum.Unselected;
+        }
+
+        public static DouShouQiPieceProto ToMessage(this DouShouQIPiece self)
+        {
+            DouShouQiPieceProto douShouQiPieceProto = new DouShouQiPieceProto();
+            douShouQiPieceProto.PieceId = self.PieceId;
+            douShouQiPieceProto.OwnerInstanceId = self.OwnerInstanceId;
+            douShouQiPieceProto.x = self.X;
+            douShouQiPieceProto.y = self.Y;
+            return douShouQiPieceProto;
         }
     }
 }

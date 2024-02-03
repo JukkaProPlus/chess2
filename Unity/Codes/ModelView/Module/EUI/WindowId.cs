@@ -22,6 +22,7 @@
         WindowID_Chat,     //聊天界面
         WindowID_ChessLobby, //棋牌大厅界面
         WindowID_Tip,   //提示界面
+        WindowID_DouShouQiBoard, //斗兽棋棋盘界面
         
     }
 }

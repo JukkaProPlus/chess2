@@ -101,6 +101,7 @@ namespace ET
 		public static void OnChessButtonClickHandler(this DlgMain self)
 		{
 			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_ChessLobby);
+			// TipHelper.ShowTip(self.ZoneScene(),"功能暂未开放");
 		}
 	}
 }

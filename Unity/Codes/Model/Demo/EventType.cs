@@ -199,6 +199,32 @@ namespace ET
         {
             public Scene ZoneScene;
         }
-        
+        public struct Tip
+        {
+            public Scene ZoneScene;
+            public string TipStr;
+        }
+        // public struct ShowTip
+        // {
+        //     public Scene ZoneScene;
+        //     public string TipStr;
+        // }
+        public struct DouShouQiPlayerPrepare
+        {
+            public Scene ZoneScene;
+            public long PlayerId;
+            public bool IsPrepare;
+        }
+
+        public struct DouShouQiPlayerAskPeace
+        {
+            public Scene ZoneScene;
+        }
+        public struct DouShouQiPlayerReadyState
+        {
+            public Scene ZoneScene;
+            public long PlayerInstanceId;
+            public bool IsReady;
+        }
     }
 }
