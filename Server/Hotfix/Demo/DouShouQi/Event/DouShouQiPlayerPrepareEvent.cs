@@ -13,7 +13,7 @@ namespace ET.Event
                 board.beginRandomPieces();
                 M2C_DouShouQiPlayerChange m2C_DouShouQiPlayerChange = new M2C_DouShouQiPlayerChange(){Board = board.ToMessage()};
                 Unit playerA = args.Unit.DomainScene().GetComponent<UnitComponent>().Get(board.playerAID);
-                Unit playerB = args.Unit.DomainScene().GetComponent<UnitComponent>().Get(board.playerAID);
+                Unit playerB = args.Unit.DomainScene().GetComponent<UnitComponent>().Get(board.playerBID);
                 MessageHelper.SendToClient(playerA, m2C_DouShouQiPlayerChange);
                 MessageHelper.SendToClient(playerB, m2C_DouShouQiPlayerChange);
             }
