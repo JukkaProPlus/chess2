@@ -22,7 +22,7 @@ namespace ET
                 
                 if (anotherPlayerID != 0)
                 {
-                    Unit anotherPlayer = Game.Scene.GetComponent<UnitComponent>().Get(anotherPlayerID);
+                    Unit anotherPlayer = unit.DomainScene().GetComponent<UnitComponent>().Get(anotherPlayerID);
                     if (anotherPlayer != null)
                     {
                         M2C_PrepareNotice m2C_PrepareNotice = new M2C_PrepareNotice(){ReadyPlayerId = unit.Id, isPrepare = request.IsPrepare};

@@ -203,6 +203,11 @@ namespace ET
             return 0;
         }
 
+        public static string ToString1(this DouShouQiBoardComponent self)
+        {
+            return $"playerAID={self.playerAID},playerBID={self.playerBID},playerAReady={self.playerAReady},playerBReady={self.playerBReady},roomID={self.roomID},curTurnPlayerID={self.curTurnPlayerID}";
+        }
+
         public static bool LeaveBoard(this DouShouQiBoardComponent self, long playerID)
         {
             if (self.playerAID == playerID)

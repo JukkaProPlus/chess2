@@ -791,6 +791,11 @@ message M2C_LeaveDouShouQiRoom // IActorLocationResponse
 	string Message = 92;
 }
 
+message M2C_DouShouQiPlayerChange	// IActorMessage
+{
+	DouShouQiBoardProto Board = 1;
+}
+
 message M2C_DouShouQiBegin	// IActorMessage
 {
 	DouShouQiBoardProto Board = 1;

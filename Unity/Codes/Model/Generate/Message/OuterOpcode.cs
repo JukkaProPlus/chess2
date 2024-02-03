@@ -98,16 +98,17 @@ namespace ET
 		 public const ushort M2C_EnterDouShouQiRoom = 10095;
 		 public const ushort C2M_LeaveDouShouQiRoom = 10096;
 		 public const ushort M2C_LeaveDouShouQiRoom = 10097;
-		 public const ushort M2C_DouShouQiBegin = 10098;
-		 public const ushort C2M_Prepare = 10099;
-		 public const ushort M2C_Prepare = 10100;
-		 public const ushort M2C_PrepareNotice = 10101;
-		 public const ushort C2M_MovePiece = 10102;
-		 public const ushort M2C_MovePiece = 10103;
-		 public const ushort C2M_PlayerApplyPeace = 10104;
-		 public const ushort M2C_PlayerApplyPeace = 10105;
-		 public const ushort M2C_AskAgreePeace = 10106;
-		 public const ushort C2M_ReplyPeaceApply = 10107;
-		 public const ushort M2C_ReplyPeaceApply = 10108;
+		 public const ushort M2C_DouShouQiPlayerChange = 10098;
+		 public const ushort M2C_DouShouQiBegin = 10099;
+		 public const ushort C2M_Prepare = 10100;
+		 public const ushort M2C_Prepare = 10101;
+		 public const ushort M2C_PrepareNotice = 10102;
+		 public const ushort C2M_MovePiece = 10103;
+		 public const ushort M2C_MovePiece = 10104;
+		 public const ushort C2M_PlayerApplyPeace = 10105;
+		 public const ushort M2C_PlayerApplyPeace = 10106;
+		 public const ushort M2C_AskAgreePeace = 10107;
+		 public const ushort C2M_ReplyPeaceApply = 10108;
+		 public const ushort M2C_ReplyPeaceApply = 10109;
 	}
 }

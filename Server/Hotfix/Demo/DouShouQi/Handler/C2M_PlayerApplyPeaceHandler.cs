@@ -11,7 +11,7 @@ namespace ET
                 long oppoentPlayerInstanceId = board.GetOpponentPlayerID(unit.InstanceId);
                 if (oppoentPlayerInstanceId != 0)
                 {
-                    Unit anotherPlayer = Game.Scene.GetComponent<UnitComponent>().Get(oppoentPlayerInstanceId);
+                    Unit anotherPlayer = unit.DomainScene().GetComponent<UnitComponent>().Get(oppoentPlayerInstanceId);
                     MessageHelper.SendToClient(anotherPlayer, new M2C_AskAgreePeace());
                 }
                 else

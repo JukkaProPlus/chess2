@@ -226,5 +226,10 @@ namespace ET
             public long PlayerInstanceId;
             public bool IsReady;
         }
+
+        public struct DouShouQiBoardChange
+        {
+            public Scene ZoneScene;
+        }
     }
 }

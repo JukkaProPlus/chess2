@@ -6,6 +6,7 @@
         protected override void Run(Session session, M2C_PrepareNotice message)
         {
             DouShouQiBoardComponent board = session.ZoneScene().GetComponent<DouShouQiBoardComponent>();
+            Log.Info($"M2C_PrepareNotice A board = {board.ToString1()}");
             if (message.ReadyPlayerId == board.playerAID)
             {
                 board.playerAReady = message.isPrepare;
@@ -14,6 +15,7 @@
             {
                 board.playerBReady = message.isPrepare;
             }
+            Log.Info($"M2C_PrepareNotice B board = {board.ToString1()}");
             Game.EventSystem.Publish(new EventType.DouShouQiPlayerPrepare(){ZoneScene = session.ZoneScene(), PlayerId = message.ReadyPlayerId, IsPrepare = message.isPrepare});
         }
     }

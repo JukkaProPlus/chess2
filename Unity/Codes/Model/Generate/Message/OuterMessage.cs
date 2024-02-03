@@ -1535,6 +1535,15 @@ namespace ET
 
 	}
 
+	[Message(OuterOpcode.M2C_DouShouQiPlayerChange)]
+	[ProtoContract]
+	public partial class M2C_DouShouQiPlayerChange: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public DouShouQiBoardProto Board { get; set; }
+
+	}
+
 	[Message(OuterOpcode.M2C_DouShouQiBegin)]
 	[ProtoContract]
 	public partial class M2C_DouShouQiBegin: Object, IActorMessage

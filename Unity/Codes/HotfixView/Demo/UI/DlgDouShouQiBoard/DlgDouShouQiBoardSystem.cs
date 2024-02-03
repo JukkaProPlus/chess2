@@ -37,9 +37,10 @@ namespace ET
 					? LanguageHelper.GetLanguageString(20) : LanguageHelper.GetLanguageString(19);		//"取消准备" : "准备";
 			self.View.ELabel_PrepareOpponentText.text = self.ZoneScene().GetComponent<DouShouQiBoardComponent>().isOpponentReady()
 					? LanguageHelper.GetLanguageString(21):LanguageHelper.GetLanguageString(22);
+			long myId = self.DomainScene().GetComponent<PlayerComponent>().MyId;
+			self.View.ELabel_MyNameText.text = myId == 0 ? "" : myId.ToString();
+			long opponentId = self.ZoneScene().GetComponent<DouShouQiBoardComponent>().GetOpponentPlayerID(myId);
+			self.View.ELabel_OpponentNameText.text = opponentId == 0 ? "" : opponentId.ToString();
 		}
-
-		 
-
 	}
 }
