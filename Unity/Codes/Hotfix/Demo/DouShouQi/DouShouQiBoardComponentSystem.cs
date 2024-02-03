@@ -88,6 +88,46 @@ namespace ET
             
             return DouShouQiPieceConfigCategory.Instance.CanEat(sourcePiece, destPiece);
         }
+
+        public static void beginRandomPieces(this DouShouQiBoardComponent self)
+        {
+            self.fillPieces();
+            self.randomPieces();
+        }
+
+        public static void fillPieces(this DouShouQiBoardComponent self)
+        {
+            self.Pieces.Clear();
+            for (int i = 0; i < 16; i++)
+            {
+                int x = i % 4;
+                int y = i / 4;
+                int id = i / 2 + 1;
+                if (i % 2 == 0)
+                {
+                    self.addPiece(self.playerAID, id, x, y);
+                }
+                else
+                {
+                    self.addPiece(self.playerBID, id, x, y);
+                }
+            }
+        }
+
+        public static void randomPieces(this DouShouQiBoardComponent self)
+        {
+            int count = self.Pieces.Count;
+            for (int i = 0; i < count; i++)
+            {
+                int r = i + RandomHelper.RandomNumber(0, count - i);
+                int tempX = self.Pieces[i].X;
+                int tempY = self.Pieces[i].Y;
+                self.Pieces[i].X = self.Pieces[r].X;
+                self.Pieces[i].Y = self.Pieces[r].Y;
+                self.Pieces[r].X = tempX;
+                self.Pieces[r].Y = tempY;
+            }
+        }
         public static bool isAllPlayerReady(this DouShouQiBoardComponent self)
         {
             return self.playerAReady && self.playerBReady;

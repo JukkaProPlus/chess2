@@ -9,7 +9,21 @@ namespace ET
             if (unit.DomainScene().GetComponent<DouShouQiComponent>()
                 .IsInDouShouQiBoard(unit.Id, out DouShouQiBoardComponent board))
             {
-                board.LeaveBoard(unit.Id);
+                long opponentPlayerID = board.GetOpponentPlayerID(unit.Id);
+                if(board.LeaveBoard(unit.Id))
+                {
+                    response.Error = ErrorCode.ERR_Success;
+                    response.Message = "离开棋盘成功";
+                    if (opponentPlayerID != 0)
+                    {
+                        Unit opponentPlayer = unit.DomainScene().GetComponent<UnitComponent>().Get(opponentPlayerID);
+                        if (opponentPlayer != null)
+                        {
+                            M2C_DouShouQiPlayerChange m2C_DouShouQiPlayerChange = new M2C_DouShouQiPlayerChange(){Board = board.ToMessage()};
+                            MessageHelper.SendToClient(opponentPlayer, m2C_DouShouQiPlayerChange);
+                        }
+                    }
+                }
             }
             else
             {

@@ -36,8 +36,7 @@ namespace ET
                 response.Message = "当前不在棋盘中";
             }
             reply();
-            await ETTask.CompletedTask;
-            Game.EventSystem.Publish(new EventType.DouShouQiPlayerPrepare(){roomID = board.roomID, Unit = unit});
+            await Game.EventSystem.PublishAsync(new EventType.DouShouQiPlayerPrepare(){roomID = board.roomID, Unit = unit});
         }
     }
 }

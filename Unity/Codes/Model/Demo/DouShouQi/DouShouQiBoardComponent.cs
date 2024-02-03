@@ -15,5 +15,8 @@ namespace ET
         /// 轮到这个玩家操作了
         /// </summary>
         public long curTurnPlayerID = 0;
+        // #if SERVER
+        // public 
+        // #endif
     }
 }
