@@ -26,4 +26,5 @@
 {"_t":"LanguageZHCNConfig","_id":25,"Str":"胜利"},
 {"_t":"LanguageZHCNConfig","_id":26,"Str":"失败"},
 {"_t":"LanguageZHCNConfig","_id":27,"Str":"???"},
+{"_t":"LanguageZHCNConfig","_id":28,"Str":"距离太远"},
 ]}

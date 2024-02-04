@@ -55,6 +55,10 @@ namespace ET
 
             return null;
         }
+        public static bool isDistanceOk(this DouShouQiBoardComponent self, int sourceX, int sourceY, int destX, int destY)
+        {
+            return Math.Abs(sourceX - destX) + Math.Abs(sourceY - destY) == 1;
+        }
         public static int canMoveTo(this DouShouQiBoardComponent self, long playerID, int sourceX, int sourceY, int destX, int destY)
         {
             DouShouQIPiece sourcePiece = GetPiece(self, sourceX, sourceY);

@@ -26,4 +26,5 @@
 {"_t":"LanguageENUSConfig","_id":25,"Str":"Victory"},
 {"_t":"LanguageENUSConfig","_id":26,"Str":"Failed"},
 {"_t":"LanguageENUSConfig","_id":27,"Str":"???"},
+{"_t":"LanguageENUSConfig","_id":28,"Str":"The distance is too far"},
 ]}

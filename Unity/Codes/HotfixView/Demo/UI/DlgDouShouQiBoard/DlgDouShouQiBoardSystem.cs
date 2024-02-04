@@ -98,6 +98,29 @@ namespace ET
                                 }
                                 else
                                 {
+                                    if (board.isDistanceOk(selectedPiece.X, selectedPiece.Y, x, y))
+                                    {
+                                        if (board.canMoveTo(myId, selectedPiece.X, selectedPiece.Y, x, y) == ErrorCode.ERR_Success)
+                                        {
+                                            DouShouQiHelper.ReqMovePiece(self.ZoneScene(), selectedPiece.X, selectedPiece.Y, x, y).Coroutine();
+                                            board.ResetAllPiecesState();
+                                        }
+                                        else
+                                        {
+                                            TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(24));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(28));
+                                    }
+                                    
+                                }
+                            }
+                            else
+                            {
+                                if (board.isDistanceOk(selectedPiece.X, selectedPiece.Y, x, y))
+                                {
                                     if (board.canMoveTo(myId, selectedPiece.X, selectedPiece.Y, x, y) == ErrorCode.ERR_Success)
                                     {
                                         DouShouQiHelper.ReqMovePiece(self.ZoneScene(), selectedPiece.X, selectedPiece.Y, x, y).Coroutine();
@@ -105,20 +128,12 @@ namespace ET
                                     }
                                     else
                                     {
-                                        TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(24));
+                                        board.ResetAllPiecesState();
                                     }
-                                }
-                            }
-                            else
-                            {
-                                if (board.canMoveTo(myId, selectedPiece.X, selectedPiece.Y, x, y) == ErrorCode.ERR_Success)
-                                {
-                                    DouShouQiHelper.ReqMovePiece(self.ZoneScene(), selectedPiece.X, selectedPiece.Y, x, y).Coroutine();
-                                    board.ResetAllPiecesState();
                                 }
                                 else
                                 {
-                                    board.ResetAllPiecesState();
+                                    TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(28));
                                 }
                             }
 
