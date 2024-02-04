@@ -21,10 +21,8 @@ namespace ET
             switch (ConstValue.LanguageType)
             {
                 case LanguageEnum.ZH_CN:
-                    Log.Info($"zh_cn{id.ToString()}");
                     return string.Format(LanguageZHCNConfigCategory.Instance.Get(id).Str, args);
                 case LanguageEnum.EN_US:
-                    Log.Info($"en_us{id.ToString()}");
                     return string.Format(LanguageENUSConfigCategory.Instance.Get(id).Str, args);
                 default:
                     throw new Exception("LanguageType is not exist!");
