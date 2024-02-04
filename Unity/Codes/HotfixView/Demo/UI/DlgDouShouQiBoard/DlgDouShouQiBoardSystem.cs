@@ -48,23 +48,25 @@ namespace ET
             self.ESPieces[13] = self.View.ES_Piece13;
             self.ESPieces[14] = self.View.ES_Piece14;
             self.ESPieces[15] = self.View.ES_Piece15;
-
-            self.positions[0] = self.View.EPos0Image.transform;
-            self.positions[1] = self.View.EPos1Image.transform;
-            self.positions[2] = self.View.EPos2Image.transform;
-            self.positions[3] = self.View.EPos3Image.transform;
-            self.positions[4] = self.View.EPos4Image.transform;
-            self.positions[5] = self.View.EPos5Image.transform;
-            self.positions[6] = self.View.EPos6Image.transform;
-            self.positions[7] = self.View.EPos7Image.transform;
-            self.positions[8] = self.View.EPos8Image.transform;
-            self.positions[9] = self.View.EPos9Image.transform;
-            self.positions[10] = self.View.EPos10Image.transform;
-            self.positions[11] = self.View.EPos11Image.transform;
-            self.positions[12] = self.View.EPos12Image.transform;
-            self.positions[13] = self.View.EPos13Image.transform;
-            self.positions[14] = self.View.EPos14Image.transform;
-            self.positions[15] = self.View.EPos15Image.transform;
+            
+            
+            self.positionButtons[0] = self.View.EPosButton0Button;
+            self.positionButtons[1] = self.View.EPosButton1Button;
+            self.positionButtons[2] = self.View.EPosButton2Button;
+            self.positionButtons[3] = self.View.EPosButton3Button;
+            self.positionButtons[4] = self.View.EPosButton4Button;
+            self.positionButtons[5] = self.View.EPosButton5Button;
+            self.positionButtons[6] = self.View.EPosButton6Button;
+            self.positionButtons[7] = self.View.EPosButton7Button;
+            self.positionButtons[8] = self.View.EPosButton8Button;
+            self.positionButtons[9] = self.View.EPosButton9Button;
+            self.positionButtons[10] = self.View.EPosButton10Button;
+            self.positionButtons[11] = self.View.EPosButton11Button;
+            self.positionButtons[12] = self.View.EPosButton12Button;
+            self.positionButtons[13] = self.View.EPosButton13Button;
+            self.positionButtons[14] = self.View.EPosButton14Button;
+            self.positionButtons[15] = self.View.EPosButton15Button;
+            
             if (!self.registeredESPicesEvent)
             {
                 self.registeredESPicesEvent = true;
@@ -147,7 +149,7 @@ namespace ET
                         }
                     };
                     self.ESPieces[i].E_ButtonButton.AddListener(a);
-                    // self.positions[i].e_buttonButton.AddListener(a);
+                    self.positionButtons[i].AddListener(a);
                 }
             }
 

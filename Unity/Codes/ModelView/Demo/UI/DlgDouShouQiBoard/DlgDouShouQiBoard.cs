@@ -5,7 +5,7 @@
 	{
 
 		public DlgDouShouQiBoardViewComponent View { get => this.Parent.GetComponent<DlgDouShouQiBoardViewComponent>();} 
-		public UnityEngine.Transform[] positions = new UnityEngine.Transform[16];
+		public UnityEngine.UI.Button[] positionButtons = new UnityEngine.UI.Button[16];
 		public ES_Piece[] ESPieces = new ES_Piece[16];
 		public bool registeredESPicesEvent = false;
 		 
