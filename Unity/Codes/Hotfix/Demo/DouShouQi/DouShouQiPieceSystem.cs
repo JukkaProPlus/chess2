@@ -2,9 +2,9 @@
 {
     public class DouShouQiPieceAwakeSystem : AwakeSystem<DouShouQIPiece, long, int, int, int>
     {
-        public override void Awake(DouShouQIPiece self, long ownerInstanceId, int pieceId, int x, int y)
+        public override void Awake(DouShouQIPiece self, long ownerId, int pieceId, int x, int y)
         {
-            self.OwnerInstanceId = ownerInstanceId;
+            self.OwnerId = ownerId;
             self.PieceId = pieceId;
             self.X = x;
             self.Y = y;
@@ -16,7 +16,7 @@
     {
         public override bool Select(DouShouQIPiece self, long operatorInstanceId)
         {
-            if (operatorInstanceId != self.OwnerInstanceId)
+            if (operatorInstanceId != self.OwnerId)
             {
                 // Log.Info($"不是自己的棋子，不能选择");
                 Log.Info(LanguageHelper.GetLanguageString(17));
@@ -26,7 +26,7 @@
         }
         public override bool Deselect(DouShouQIPiece self, long operatorInstanceId)
         {
-            if (operatorInstanceId != self.OwnerInstanceId)
+            if (operatorInstanceId != self.OwnerId)
             {
                 // Log.Info($"不是自己的棋子，不能取消选择");
                 Log.Info(LanguageHelper.GetLanguageString(18));
@@ -59,7 +59,7 @@
         public static void FromMessage(this DouShouQIPiece self, DouShouQiPieceProto douShouQiPieceProto)
         {
             // self.Id = douShouQiPieceProto.Id;
-            self.OwnerInstanceId = douShouQiPieceProto.OwnerInstanceId;
+            self.OwnerId = douShouQiPieceProto.OwnerInstanceId;
             self.PieceId = douShouQiPieceProto.PieceId;
             self.X = douShouQiPieceProto.x;
             self.Y = douShouQiPieceProto.y;
@@ -70,7 +70,7 @@
         {
             DouShouQiPieceProto douShouQiPieceProto = new DouShouQiPieceProto();
             douShouQiPieceProto.PieceId = self.PieceId;
-            douShouQiPieceProto.OwnerInstanceId = self.OwnerInstanceId;
+            douShouQiPieceProto.OwnerInstanceId = self.OwnerId;
             douShouQiPieceProto.x = self.X;
             douShouQiPieceProto.y = self.Y;
             return douShouQiPieceProto;

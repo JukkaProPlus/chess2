@@ -64,6 +64,89 @@ namespace ET
             self.positions[13] = self.View.EPos13Image.transform;
             self.positions[14] = self.View.EPos14Image.transform;
             self.positions[15] = self.View.EPos15Image.transform;
+            if (!self.registeredESPicesEvent)
+            {
+                self.registeredESPicesEvent = true;
+                for (int i = 0; i < 16; i++)
+                {
+                    int index = i;
+                    self.ESPieces[i].E_ButtonButton.AddListener(()=>
+                    {
+                        Log.Info("Click Piece " + i);
+                        int x = index % 4;
+                        int y = index / 4;
+                        long myId = self.DomainScene().GetComponent<PlayerComponent>().MyId;
+                        DouShouQiBoardComponent board = self.ZoneScene().GetComponent<DouShouQiBoardComponent>();
+                        DouShouQIPiece selectedPiece = board.GetSelectedPiece(myId);
+                        DouShouQIPiece curSelectPiece = board.GetPiece(x, y);
+                        if (selectedPiece != null)  //前面有选择一个我的棋子
+                        {
+                            if (curSelectPiece != null)
+                            {
+                                if (curSelectPiece.OwnerId == myId)
+                                {
+                                    board.ResetAllPiecesState();
+                                    curSelectPiece.Select();
+                                }
+                                else
+                                {
+                                    if (board.canMoveTo(myId, selectedPiece.X, selectedPiece.Y, x, y) == ErrorCode.ERR_Success)
+                                    {
+                                        DouShouQiHelper.ReqMovePiece(self.ZoneScene(), selectedPiece.X, selectedPiece.Y, x, y).Coroutine();
+                                        board.ResetAllPiecesState();
+                                    }
+                                    else
+                                    {
+                                        TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(24));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (board.canMoveTo(myId, selectedPiece.X, selectedPiece.Y, x, y) == ErrorCode.ERR_Success)
+                                {
+                                    DouShouQiHelper.ReqMovePiece(self.ZoneScene(), selectedPiece.X, selectedPiece.Y, x, y).Coroutine();
+                                    board.ResetAllPiecesState();
+                                }
+                                else
+                                {
+                                    board.ResetAllPiecesState();
+                                }
+                            }
+                            
+                        }
+                        else        //前面没有选择棋子
+                        {
+                            if(curSelectPiece != null)  //现在有选择棋子
+                            {
+                                if (curSelectPiece.isOpened)
+                                {
+                                    if (curSelectPiece.OwnerId == myId)
+                                    {
+                                        //选择自己的棋子
+                                        curSelectPiece.Select();
+                                    }
+                                    else
+                                    {
+                                        TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(23));
+                                    }    
+                                }
+                                else
+                                {
+                                    //请求翻开棋子
+                                    DouShouQiHelper.ReqOpenPiece(self.ZoneScene(), x, y).Coroutine();
+                                    board.ResetAllPiecesState();
+                                }
+                                
+                            }
+                            else    //现在也没有选择棋子
+                            {
+                                board.ResetAllPiecesState();
+                            }
+                        }
+                    });
+                }
+            }
 
             self.Refresh();
         }
@@ -92,8 +175,8 @@ namespace ET
                 int y = piece.Y;
                 int index = x + y * 4;
                 self.ESPieces[index].uiTransform.gameObject.SetActive(true);
-                self.ESPieces[index].E_LabelText.text = LanguageHelper.GetLanguageString(DouShouQiPieceConfigCategory.Instance.Get(piece.PieceId).Name);
-                self.ESPieces[index].E_SpriteImage.color = piece.OwnerInstanceId == myId ? Color.blue : Color.red;
+                self.ESPieces[index].E_LabelText.text = piece.isOpened ? LanguageHelper.GetLanguageString(DouShouQiPieceConfigCategory.Instance.Get(piece.PieceId).Name) : LanguageHelper.GetLanguageString(27);
+                self.ESPieces[index].E_SpriteImage.color = piece.OwnerId == myId ? Color.blue : Color.red;
             }
             Log.Info("Refresh DlgDouShouQiBoard B");
         }

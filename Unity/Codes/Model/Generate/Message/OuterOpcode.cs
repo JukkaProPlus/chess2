@@ -105,10 +105,12 @@ namespace ET
 		 public const ushort M2C_PrepareNotice = 10102;
 		 public const ushort C2M_MovePiece = 10103;
 		 public const ushort M2C_MovePiece = 10104;
-		 public const ushort C2M_PlayerApplyPeace = 10105;
-		 public const ushort M2C_PlayerApplyPeace = 10106;
-		 public const ushort M2C_AskAgreePeace = 10107;
-		 public const ushort C2M_ReplyPeaceApply = 10108;
-		 public const ushort M2C_ReplyPeaceApply = 10109;
+		 public const ushort C2M_OpenPiece = 10105;
+		 public const ushort M2C_OpenPiece = 10106;
+		 public const ushort C2M_PlayerApplyPeace = 10107;
+		 public const ushort M2C_PlayerApplyPeace = 10108;
+		 public const ushort M2C_AskAgreePeace = 10109;
+		 public const ushort C2M_ReplyPeaceApply = 10110;
+		 public const ushort M2C_ReplyPeaceApply = 10111;
 	}
 }

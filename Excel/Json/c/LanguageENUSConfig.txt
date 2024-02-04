@@ -21,4 +21,9 @@
 {"_t":"LanguageENUSConfig","_id":20,"Str":"Cancel Prepare"},
 {"_t":"LanguageENUSConfig","_id":21,"Str":"Prepared"},
 {"_t":"LanguageENUSConfig","_id":22,"Str":"Not Prepare"},
+{"_t":"LanguageENUSConfig","_id":23,"Str":"Cant Select Opponent's Piece"},
+{"_t":"LanguageENUSConfig","_id":24,"Str":"Cant Eat"},
+{"_t":"LanguageENUSConfig","_id":25,"Str":"Victory"},
+{"_t":"LanguageENUSConfig","_id":26,"Str":"Failed"},
+{"_t":"LanguageENUSConfig","_id":27,"Str":"???"},
 ]}

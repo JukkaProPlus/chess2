@@ -1636,6 +1636,40 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(M2C_OpenPiece))]
+	[Message(OuterOpcode.C2M_OpenPiece)]
+	[ProtoContract]
+	public partial class C2M_OpenPiece: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long playerId { get; set; }
+
+		[ProtoMember(2)]
+		public int x { get; set; }
+
+		[ProtoMember(3)]
+		public int y { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_OpenPiece)]
+	[ProtoContract]
+	public partial class M2C_OpenPiece: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
 	[ResponseType(nameof(M2C_PlayerApplyPeace))]
 	[Message(OuterOpcode.C2M_PlayerApplyPeace)]
 	[ProtoContract]

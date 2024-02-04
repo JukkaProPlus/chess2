@@ -198,6 +198,20 @@
 
             return null;
         }
+        public static bool GetBoardByPlayerId(this DouShouQiComponent self, long playerId, out DouShouQiBoardComponent board)
+        {
+            for (int i = 0; i < self.Boards.Count; i++)
+            {
+                if (self.Boards[i].playerAID == playerId || self.Boards[i].playerBID == playerId)
+                {
+                    board = self.Boards[i];
+                    return true;
+                }
+            }
+
+            board = null;
+            return false;
+        }
         public static DouShouQiBoardComponent GetBoardByIndex(this DouShouQiComponent self, int index)
         {
             if (index < 0 || index >= self.Boards.Count)

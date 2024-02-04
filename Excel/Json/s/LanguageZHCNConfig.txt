@@ -21,4 +21,9 @@
 {"_t":"LanguageZHCNConfig","_id":20,"Str":"取消准备"},
 {"_t":"LanguageZHCNConfig","_id":21,"Str":"已准备"},
 {"_t":"LanguageZHCNConfig","_id":22,"Str":"未准备"},
+{"_t":"LanguageZHCNConfig","_id":23,"Str":"只能选择自己的棋子"},
+{"_t":"LanguageZHCNConfig","_id":24,"Str":"打不赢"},
+{"_t":"LanguageZHCNConfig","_id":25,"Str":"胜利"},
+{"_t":"LanguageZHCNConfig","_id":26,"Str":"失败"},
+{"_t":"LanguageZHCNConfig","_id":27,"Str":"???"},
 ]}

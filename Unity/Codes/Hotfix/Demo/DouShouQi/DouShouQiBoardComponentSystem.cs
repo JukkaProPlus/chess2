@@ -42,57 +42,57 @@ namespace ET
             self.Pieces.Add(piece);
             return true;
         }
-        public static bool canMoveTo(this DouShouQiBoardComponent self, int sourceX, int sourceY, int destX, int destY)
+
+        public static DouShouQIPiece GetPiece(this DouShouQiBoardComponent self, int x, int y)
         {
-            if (self.Pieces.Count == 0)
-            {
-#if NOT_UNITY
-                Log.Error($"棋盘上没有棋子,{sourceX},{sourceY}");
-#else
-                TipHelper.ShowTip(self.ZoneScene(), $"棋盘上没有棋子,{sourceX},{sourceY}");
-#endif
-                return false;
-            }
-            DouShouQIPiece sourcePiece = null;
             for(int i = 0; i < self.Pieces.Count; i++)
             {
-                if (self.Pieces[i].X == sourceX && self.Pieces[i].Y == sourceY)
+                if (self.Pieces[i].X == x && self.Pieces[i].Y == y)
                 {
-                    sourcePiece = self.Pieces[i];
-                    break;
+                    return self.Pieces[i];
                 }
-            }
-            if (sourcePiece == null)
-            {
-#if NOT_UNITY
-                Log.Error($"棋盘上没有棋子,{sourceX},{sourceY}");
-#else
-                TipHelper.ShowTip(self.ZoneScene(), $"棋盘上没有棋子,{sourceX},{sourceY}");
-#endif
-                return false;
             }
 
-            DouShouQIPiece destPiece = null;
-            for (int i = 0; i < self.Pieces.Count; i++)
+            return null;
+        }
+        public static int canMoveTo(this DouShouQiBoardComponent self, long playerID, int sourceX, int sourceY, int destX, int destY)
+        {
+            DouShouQIPiece sourcePiece = GetPiece(self, sourceX, sourceY);
+            if (sourcePiece == null)
             {
-                if (self.Pieces[i].X == destX && self.Pieces[i].Y == destY)
-                {
-                    destPiece = self.Pieces[i];
-                    break;
-                }
+                return ErrorCode.ERR_DouShouQiPieceNotExist;
             }
+            if (sourcePiece.OwnerId != playerID)
+            {
+                return ErrorCode.ERR_DouShouQiNotYourPiece;
+            }
+
+            DouShouQIPiece destPiece = GetPiece(self, destX, destY);
             if (destPiece == null)
             {
-                return true;
+                return ErrorCode.ERR_Success;
             }
-            
-            return DouShouQiPieceConfigCategory.Instance.CanEat(sourcePiece, destPiece);
+            if (destPiece.isOpened == false)
+            {
+                return ErrorCode.ERR_DouShouQiCanntEatUnknowPiece;
+            }
+            if (destPiece.OwnerId == playerID)
+            {
+                return ErrorCode.ERR_DouShouQiCanntEatSameCampPiece;
+            }
+            if (!DouShouQiPieceConfigCategory.Instance.CanEat(sourcePiece, destPiece))
+            {
+                return ErrorCode.ERR_DouShouQiCanntEatStrongerPiece;
+            }
+
+            return ErrorCode.ERR_Success;
         }
 
         public static void beginRandomPieces(this DouShouQiBoardComponent self)
         {
             self.fillPieces();
             self.randomPieces();
+            self.curTurnPlayerID = self.playerAID;
         }
 
         public static void fillPieces(this DouShouQiBoardComponent self)
@@ -270,5 +270,72 @@ namespace ET
 
             return false;
         }
+        public static void ResetAllPiecesState(this DouShouQiBoardComponent self)
+        {
+            for (int i = 0; i < self.Pieces.Count; i++)
+            {
+                self.Pieces[i].State = PieceStateEnum.Unselected;
+            }
+        }
+        public static DouShouQIPiece GetSelectedPiece(this DouShouQiBoardComponent self, long playerID)
+        {
+            for (int i = 0; i < self.Pieces.Count; i++)
+            {
+                if (self.Pieces[i].OwnerId == playerID && self.Pieces[i].State == PieceStateEnum.Selected)
+                {
+                    return self.Pieces[i];
+                }
+            }
+
+            return null;
+        }
+        #if SERVER
+            public static int MovePiece(this DouShouQiBoardComponent self, long playerID, int sourceX, int sourceY, int destX, int destY)
+            {
+                if (self.curTurnPlayerID != playerID)
+                {
+                    return ErrorCode.ERR_DouShouQiNotYourTurn;
+                }
+                int err = canMoveTo(self, playerID, sourceX, sourceY, destX, destY);
+                if (err != ErrorCode.ERR_Success)
+                {
+                    return err;
+                }
+
+                DouShouQIPiece sourcePiece = GetPiece(self, sourceX, sourceY);
+                DouShouQIPiece destPiece = GetPiece(self, destX, destY);
+                if (destPiece != null)
+                {
+                    self.Pieces.Remove(destPiece);
+                    destPiece.Dispose();
+                }
+                sourcePiece.X = destX;
+                sourcePiece.Y = destY;
+                self.curTurnPlayerID = GetOpponentPlayerID(self, playerID);
+                return ErrorCode.ERR_Success;
+            }
+
+            public static int OpenPiece(this DouShouQiBoardComponent self, long playerID, int x, int y)
+            {
+                if (self.curTurnPlayerID != playerID)
+                {
+                    return ErrorCode.ERR_DouShouQiNotYourTurn;
+                }
+
+                DouShouQIPiece piece = GetPiece(self, x, y);
+                if (piece == null)
+                {
+                    return ErrorCode.ERR_DouShouQiCanntOpenPieceNotExist;
+                }
+                if (piece.isOpened)
+                {
+                    return ErrorCode.ERR_DouShouQiPieceIsAlreadyOpend;
+                }
+
+                piece.isOpened = true;
+                self.curTurnPlayerID = GetOpponentPlayerID(self, playerID);
+                return ErrorCode.ERR_Success;
+            }
+        #endif
     }
 }

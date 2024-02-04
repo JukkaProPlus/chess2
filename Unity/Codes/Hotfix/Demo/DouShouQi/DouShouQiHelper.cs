@@ -73,5 +73,53 @@ namespace ET
             zoneScene.GetComponent<DouShouQiBoardComponent>().setMeReadyState(isPrepare);
             return ErrorCode.ERR_Success;
         }
+        public static async ETTask<int> ReqMovePiece(Scene zoneScene, int sourceX, int sourceY, int destX, int destY)
+        {
+            M2C_MovePiece m2CMovePiece = null;
+            try
+            {
+                m2CMovePiece = (M2C_MovePiece) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2M_MovePiece()
+                {
+                    sourceX = sourceX,
+                    sourceY = sourceY,
+                    destX = destX,
+                    destY = destY
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetWorkError;
+            }
+            if (m2CMovePiece.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(m2CMovePiece.Error.ToString());
+                return m2CMovePiece.Error;
+            }
+            return ErrorCode.ERR_Success;
+        }
+        public static async ETTask<int> ReqOpenPiece(Scene zoneScene, int x, int y)
+        {
+            M2C_OpenPiece m2COpenPiece = null;
+            try
+            {
+                m2COpenPiece = (M2C_OpenPiece) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2M_OpenPiece()
+                {
+                    x = x,
+                    y = y
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetWorkError;
+            }
+            if (m2COpenPiece.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(m2COpenPiece.Error.ToString());
+                return m2COpenPiece.Error;
+            }
+            return ErrorCode.ERR_Success;
+        }
     }
 }

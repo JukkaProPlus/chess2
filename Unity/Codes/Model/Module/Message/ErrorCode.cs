@@ -108,5 +108,13 @@ namespace ET
         public const int ERR_DouShouQiRoomIsFull = 200055;
         public const int ERR_DouShouQiCurOutside = 200056;
         public const int ERR_DouShouQiNoOpponent = 200057;
+        public const int ERR_DouShouQiNotYourTurn = 200058;
+        public const int ERR_DouShouQiNotYourPiece = 200059;
+        public const int ERR_DouShouQiPieceNotExist = 200060;
+        public const int ERR_DouShouQiCanntEatSameCampPiece = 200061;
+        public const int ERR_DouShouQiCanntEatStrongerPiece = 200062;
+        public const int ERR_DouShouQiCanntEatUnknowPiece = 200063;
+        public const int ERR_DouShouQiCanntOpenPieceNotExist = 200064;
+        public const int ERR_DouShouQiPieceIsAlreadyOpend = 200065;
     }
 }

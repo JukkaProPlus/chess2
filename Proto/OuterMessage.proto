@@ -843,6 +843,22 @@ message M2C_MovePiece 	// IActorLocationResponse
 	string Message = 92;
 }
 
+//ResponseType M2C_OpenPiece
+message C2M_OpenPiece // IActorLocationRequest
+{
+	int RpcId = 90;
+	long playerId = 1;
+	int x = 2;
+	int y = 3;
+}
+
+message M2C_OpenPiece // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
 //ResponseType M2C_PlayerApplyPeace
 message C2M_PlayerApplyPeace	// IActorLocationRequest
 {
