@@ -210,6 +210,7 @@ namespace ET
             for (int i = 0; i < proto.Pieces.Count; i++)
             {
                 DouShouQIPiece piece = self.AddChild<DouShouQIPiece, long, int, int, int>(proto.Pieces[i].OwnerInstanceId, proto.Pieces[i].PieceId, proto.Pieces[i].x, proto.Pieces[i].y);
+                piece.isOpened = proto.Pieces[i].isOpened;
                 self.Pieces.Add(piece);
             }
         }
