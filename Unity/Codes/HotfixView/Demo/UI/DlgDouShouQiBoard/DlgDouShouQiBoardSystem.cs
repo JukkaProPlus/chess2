@@ -90,11 +90,13 @@ namespace ET
                                 {
                                     DouShouQiHelper.ReqOpenPiece(self.ZoneScene(), x, y).Coroutine();
                                     board.ResetAllPiecesState();
+                                    self.Refresh();
                                 }
                                 else if (curSelectPiece.OwnerId == myId)
                                 {
                                     board.ResetAllPiecesState();
                                     curSelectPiece.Select();
+                                    self.Refresh();
                                 }
                                 else
                                 {
@@ -104,6 +106,7 @@ namespace ET
                                         {
                                             DouShouQiHelper.ReqMovePiece(self.ZoneScene(), selectedPiece.X, selectedPiece.Y, x, y).Coroutine();
                                             board.ResetAllPiecesState();
+                                            self.Refresh();
                                         }
                                         else
                                         {
@@ -125,10 +128,12 @@ namespace ET
                                     {
                                         DouShouQiHelper.ReqMovePiece(self.ZoneScene(), selectedPiece.X, selectedPiece.Y, x, y).Coroutine();
                                         board.ResetAllPiecesState();
+                                        self.Refresh();
                                     }
                                     else
                                     {
                                         board.ResetAllPiecesState();
+                                        self.Refresh();
                                     }
                                 }
                                 else
@@ -148,6 +153,7 @@ namespace ET
                                     {
                                         //选择自己的棋子
                                         curSelectPiece.Select();
+                                        self.Refresh();
                                     }
                                     else
                                     {
@@ -159,12 +165,14 @@ namespace ET
                                     //请求翻开棋子
                                     DouShouQiHelper.ReqOpenPiece(self.ZoneScene(), x, y).Coroutine();
                                     board.ResetAllPiecesState();
+                                    self.Refresh();
                                 }
 
                             }
                             else //现在也没有选择棋子
                             {
                                 board.ResetAllPiecesState();
+                                self.Refresh();
                             }
                         }
                     };
