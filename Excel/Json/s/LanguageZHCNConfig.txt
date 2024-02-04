@@ -27,4 +27,5 @@
 {"_t":"LanguageZHCNConfig","_id":26,"Str":"失败"},
 {"_t":"LanguageZHCNConfig","_id":27,"Str":"???"},
 {"_t":"LanguageZHCNConfig","_id":28,"Str":"距离太远"},
+{"_t":"LanguageZHCNConfig","_id":29,"Str":"不是自己的回合"},
 ]}

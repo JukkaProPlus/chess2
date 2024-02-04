@@ -76,10 +76,15 @@ namespace ET
                     UnityAction a = () =>
                     {
                         Log.Info("Click Piece " + i);
-                        int x = index % 4;
-                        int y = index / 4;
                         long myId = self.DomainScene().GetComponent<PlayerComponent>().MyId;
                         DouShouQiBoardComponent board = self.ZoneScene().GetComponent<DouShouQiBoardComponent>();
+                        if(board.curTurnPlayerID != myId)
+                        {
+                            TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(29));
+                            return;
+                        }
+                        int x = index % 4;
+                        int y = index / 4;
                         DouShouQIPiece selectedPiece = board.GetSelectedPiece(myId);
                         DouShouQIPiece curSelectPiece = board.GetPiece(x, y);
                         if (selectedPiece != null) //前面有选择一个我的棋子
