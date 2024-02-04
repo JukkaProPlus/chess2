@@ -1281,6 +1281,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_OppoinentTurnImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_OppoinentTurnImage == null )
+     			{
+		    		this.m_E_OppoinentTurnImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_OppoinentTurn");
+     			}
+     			return this.m_E_OppoinentTurnImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_MyTurnImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MyTurnImage == null )
+     			{
+		    		this.m_E_MyTurnImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_MyTurn");
+     			}
+     			return this.m_E_MyTurnImage;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_EPos0Image = null;
@@ -1373,6 +1407,8 @@ namespace ET
 			this.m_ELabel_PrepareOpponentText = null;
 			this.m_EButton_CloseButton = null;
 			this.m_EButton_CloseImage = null;
+			this.m_E_OppoinentTurnImage = null;
+			this.m_E_MyTurnImage = null;
 			this.uiTransform = null;
 		}
 
@@ -1450,6 +1486,8 @@ namespace ET
 		private UnityEngine.UI.Text m_ELabel_PrepareOpponentText = null;
 		private UnityEngine.UI.Button m_EButton_CloseButton = null;
 		private UnityEngine.UI.Image m_EButton_CloseImage = null;
+		private UnityEngine.UI.Image m_E_OppoinentTurnImage = null;
+		private UnityEngine.UI.Image m_E_MyTurnImage = null;
 		public Transform uiTransform = null;
 	}
 }

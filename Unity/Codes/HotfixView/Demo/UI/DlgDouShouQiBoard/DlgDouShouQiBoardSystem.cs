@@ -159,6 +159,7 @@ namespace ET
         {
             Log.Info("Refresh DlgDouShouQiBoard A");
             DouShouQiBoardComponent board = self.ZoneScene().GetComponent<DouShouQiBoardComponent>();
+            
             self.View.ELabel_PrepareText.text = board.isMeReady()
                     ? LanguageHelper.GetLanguageString(20) : LanguageHelper.GetLanguageString(19);      //"取消准备" : "准备";
             self.View.ELabel_PrepareOpponentText.text = board.isOpponentReady()
@@ -167,6 +168,8 @@ namespace ET
             self.View.ELabel_MyNameText.text = myId == 0 ? "" : myId.ToString();
             long opponentId = board.GetOpponentPlayerID(myId);
             self.View.ELabel_OpponentNameText.text = opponentId == 0 ? "" : opponentId.ToString();
+            self.View.E_OppoinentTurnImage.transform.gameObject.SetActive(board.curTurnPlayerID != myId);
+            self.View.E_MyTurnImage.transform.gameObject.SetActive(board.curTurnPlayerID == myId);
 
             for (int i = 0; i < 16; i++)
             {
