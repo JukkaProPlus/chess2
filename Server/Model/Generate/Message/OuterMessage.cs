@@ -1463,6 +1463,9 @@ namespace ET
 		[ProtoMember(4)]
 		public long OwnerInstanceId { get; set; }
 
+		[ProtoMember(5)]
+		public bool isOpened { get; set; }
+
 	}
 
 	[Message(OuterOpcode.DouShouQiBoardProto)]

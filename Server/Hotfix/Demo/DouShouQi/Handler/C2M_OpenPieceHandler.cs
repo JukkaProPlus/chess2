@@ -3,9 +3,9 @@
 namespace ET
 {
     [FriendClassAttribute(typeof(ET.DouShouQiBoardComponent))]
-    public class C2M_OpenPieceHandler : AMActorLocationRpcHandler<Unit, C2M_OpenPiece, M2C_MovePiece>
+    public class C2M_OpenPieceHandler : AMActorLocationRpcHandler<Unit, C2M_OpenPiece, M2C_OpenPiece>
     {
-        protected override async ETTask Run(Unit unit, C2M_OpenPiece request, M2C_MovePiece response, Action reply)
+        protected override async ETTask Run(Unit unit, C2M_OpenPiece request, M2C_OpenPiece response, Action reply)
         {
             if (unit.DomainScene().GetComponent<DouShouQiComponent>().GetBoardByPlayerId(unit.Id, out DouShouQiBoardComponent board))
             {

@@ -68,6 +68,7 @@
             self.PieceId = douShouQiPieceProto.PieceId;
             self.X = douShouQiPieceProto.x;
             self.Y = douShouQiPieceProto.y;
+            self.isOpened = douShouQiPieceProto.isOpened;
             self.State = PieceStateEnum.Unselected;
         }
 
@@ -78,6 +79,7 @@
             douShouQiPieceProto.OwnerInstanceId = self.OwnerId;
             douShouQiPieceProto.x = self.X;
             douShouQiPieceProto.y = self.Y;
+            douShouQiPieceProto.isOpened = self.isOpened;
             return douShouQiPieceProto;
         }
     }
