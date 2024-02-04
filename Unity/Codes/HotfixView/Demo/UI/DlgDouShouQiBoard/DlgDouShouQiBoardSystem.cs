@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace ET
@@ -70,7 +71,7 @@ namespace ET
                 for (int i = 0; i < 16; i++)
                 {
                     int index = i;
-                    self.ESPieces[i].E_ButtonButton.AddListener(()=>
+                    UnityAction a = () =>
                     {
                         Log.Info("Click Piece " + i);
                         int x = index % 4;
@@ -79,7 +80,7 @@ namespace ET
                         DouShouQiBoardComponent board = self.ZoneScene().GetComponent<DouShouQiBoardComponent>();
                         DouShouQIPiece selectedPiece = board.GetSelectedPiece(myId);
                         DouShouQIPiece curSelectPiece = board.GetPiece(x, y);
-                        if (selectedPiece != null)  //前面有选择一个我的棋子
+                        if (selectedPiece != null) //前面有选择一个我的棋子
                         {
                             if (curSelectPiece != null)
                             {
@@ -113,11 +114,11 @@ namespace ET
                                     board.ResetAllPiecesState();
                                 }
                             }
-                            
+
                         }
-                        else        //前面没有选择棋子
+                        else //前面没有选择棋子
                         {
-                            if(curSelectPiece != null)  //现在有选择棋子
+                            if (curSelectPiece != null) //现在有选择棋子
                             {
                                 if (curSelectPiece.isOpened)
                                 {
@@ -129,7 +130,7 @@ namespace ET
                                     else
                                     {
                                         TipHelper.ShowTip(self.DomainScene(), LanguageHelper.GetLanguageString(23));
-                                    }    
+                                    }
                                 }
                                 else
                                 {
@@ -137,14 +138,16 @@ namespace ET
                                     DouShouQiHelper.ReqOpenPiece(self.ZoneScene(), x, y).Coroutine();
                                     board.ResetAllPiecesState();
                                 }
-                                
+
                             }
-                            else    //现在也没有选择棋子
+                            else //现在也没有选择棋子
                             {
                                 board.ResetAllPiecesState();
                             }
                         }
-                    });
+                    };
+                    self.ESPieces[i].E_ButtonButton.AddListener(a);
+                    // self.positions[i].e_buttonButton.AddListener(a);
                 }
             }
 
