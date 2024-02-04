@@ -46,6 +46,11 @@
         {
             
         }
+
+        public static bool IsSelected(this DouShouQIPiece self)
+        {
+            return self.State == PieceStateEnum.Selected;
+        }
         public static bool Select(this DouShouQIPiece self)
         {
             self.State = PieceStateEnum.Selected;

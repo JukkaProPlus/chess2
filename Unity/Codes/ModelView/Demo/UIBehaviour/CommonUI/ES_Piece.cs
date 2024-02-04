@@ -23,6 +23,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_SelectFlagImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_SelectFlagImage == null )
+     			{
+		    		this.m_E_SelectFlagImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_SelectFlag");
+     			}
+     			return this.m_E_SelectFlagImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Text E_LabelText
      	{
      		get
@@ -77,6 +94,7 @@ namespace ET
 		public void DestroyWidget()
 		{
 			this.m_E_SpriteImage = null;
+			this.m_E_SelectFlagImage = null;
 			this.m_E_LabelText = null;
 			this.m_E_ButtonButton = null;
 			this.m_E_ButtonImage = null;
@@ -84,6 +102,7 @@ namespace ET
 		}
 
 		private UnityEngine.UI.Image m_E_SpriteImage = null;
+		private UnityEngine.UI.Image m_E_SelectFlagImage = null;
 		private UnityEngine.UI.Text m_E_LabelText = null;
 		private UnityEngine.UI.Button m_E_ButtonButton = null;
 		private UnityEngine.UI.Image m_E_ButtonImage = null;

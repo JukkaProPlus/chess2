@@ -177,6 +177,7 @@ namespace ET
                 self.ESPieces[index].uiTransform.gameObject.SetActive(true);
                 self.ESPieces[index].E_LabelText.text = piece.isOpened ? LanguageHelper.GetLanguageString(DouShouQiPieceConfigCategory.Instance.Get(piece.PieceId).Name) : LanguageHelper.GetLanguageString(27);
                 self.ESPieces[index].E_SpriteImage.color = piece.OwnerId == myId ? Color.blue : Color.red;
+                self.ESPieces[index].E_SelectFlagImage.gameObject.SetActive(piece.IsSelected());
             }
             Log.Info("Refresh DlgDouShouQiBoard B");
         }
