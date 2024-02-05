@@ -10,14 +10,14 @@ namespace ET
             if (unit.DomainScene().GetComponent<DouShouQiComponent>().IsInDouShouQiBoard(unit.Id, out DouShouQiBoardComponent board))
             {
                 response.Error = board.MovePiece(unit.Id, request.sourceX, request.sourceY, request.destX, request.destY);
-
+                bool isFinish = board.IsDouShouQiFinish();
                 M2C_DouShouQiPlayerChange m2C_DouShouQiPlayerChange = new M2C_DouShouQiPlayerChange() { Board = board.ToMessage() };
                 Unit playerA = unit.DomainScene().GetComponent<UnitComponent>().Get(board.playerAID);
                 Unit playerB = unit.DomainScene().GetComponent<UnitComponent>().Get(board.playerBID);
                 MessageHelper.SendToClient(playerA, m2C_DouShouQiPlayerChange);
                 MessageHelper.SendToClient(playerB, m2C_DouShouQiPlayerChange);
                 reply();
-                if (board.IsDouShouQiFinish())
+                if (isFinish)
                 {
                     M2C_DouShouQiFinish m2C_DouShouQiFinish = new M2C_DouShouQiFinish() { winPlayerId = board.winnerID };
                     MessageHelper.SendToClient(playerA, m2C_DouShouQiFinish);
