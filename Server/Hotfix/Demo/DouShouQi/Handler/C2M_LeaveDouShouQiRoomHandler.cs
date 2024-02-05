@@ -12,6 +12,7 @@ namespace ET
                 long opponentPlayerID = board.GetOpponentPlayerID(unit.Id);
                 if(board.LeaveBoard(unit.Id))
                 {
+                    board.Restart();
                     response.Error = ErrorCode.ERR_Success;
                     response.Message = "离开棋盘成功";
                     if (opponentPlayerID != 0)

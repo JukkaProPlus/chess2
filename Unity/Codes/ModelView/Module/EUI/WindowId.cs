@@ -23,6 +23,7 @@
         WindowID_ChessLobby, //棋牌大厅界面
         WindowID_Tip,   //提示界面
         WindowID_DouShouQiBoard, //斗兽棋棋盘界面
+        WindowID_DouShouQiFinish, //斗兽棋结束界面
         
     }
 }

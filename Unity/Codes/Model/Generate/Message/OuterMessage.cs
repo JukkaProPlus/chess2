@@ -1493,6 +1493,9 @@ namespace ET
 		[ProtoMember(7)]
 		public List<DouShouQiPieceProto> Pieces = new List<DouShouQiPieceProto>();
 
+		[ProtoMember(8)]
+		public long winnerID { get; set; }
+
 	}
 
 	[Message(OuterOpcode.M2C_EnterDouShouQiRoom)]
@@ -1510,6 +1513,31 @@ namespace ET
 
 		[ProtoMember(1)]
 		public DouShouQiBoardProto Board { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_RestartDouShouQiRoom))]
+	[Message(OuterOpcode.C2M_RestartDouShouQiRoom)]
+	[ProtoContract]
+	public partial class C2M_RestartDouShouQiRoom: Object, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_RestartDouShouQiRoom)]
+	[ProtoContract]
+	public partial class M2C_RestartDouShouQiRoom: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
 
 	}
 
@@ -1593,6 +1621,15 @@ namespace ET
 
 		[ProtoMember(2)]
 		public bool isPrepare { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_DouShouQiFinish)]
+	[ProtoContract]
+	public partial class M2C_DouShouQiFinish: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public long winPlayerId { get; set; }
 
 	}
 

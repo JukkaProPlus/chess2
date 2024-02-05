@@ -121,5 +121,27 @@ namespace ET
             }
             return ErrorCode.ERR_Success;
         }
+
+        public static async ETTask<int> ReqRestartDouShouQiBoard(Scene zoneScene)
+        {
+            M2C_RestartDouShouQiRoom m2CRestart = null;
+            try
+            {
+                m2CRestart = (M2C_RestartDouShouQiRoom)await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2M_RestartDouShouQiRoom());
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetWorkError;
+            }
+
+            if (m2CRestart.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(m2CRestart.Error.ToString());
+                return m2CRestart.Error;
+            }
+
+            return ErrorCode.ERR_Success;
+        }
     }
 }

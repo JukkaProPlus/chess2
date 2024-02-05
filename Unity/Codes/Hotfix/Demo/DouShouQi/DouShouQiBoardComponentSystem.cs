@@ -205,6 +205,7 @@ namespace ET
             self.playerBID = proto.playerBID;
             self.playerAReady = proto.playerAReady;
             self.roomID = proto.roomID;
+            self.winnerID = proto.winnerID;
             self.curTurnPlayerID = proto.curTurnPlayerID;
             for (int i = 0; i < self.Pieces.Count; i++)
             {
@@ -227,6 +228,7 @@ namespace ET
             proto.playerBID = self.playerBID;
             proto.playerAReady = self.playerAReady;
             proto.roomID = self.roomID;
+            proto.winnerID = self.winnerID;
             proto.curTurnPlayerID = self.curTurnPlayerID;
             for (int i = 0; i < self.Pieces.Count; i++)
             {
@@ -294,6 +296,34 @@ namespace ET
 
             return null;
         }
+        public static bool IsDouShouQiFinish(this DouShouQiBoardComponent self)
+        {
+            int countA = 0;
+            int countB = 0;
+            for(int i = 0; i < self.Pieces.Count; i++)
+            {
+                if (self.Pieces[i].OwnerId == self.playerAID)
+                {
+                    countA++;
+                }
+                else if (self.Pieces[i].OwnerId == self.playerBID)
+                {
+                    countB++;
+                }
+            }
+            if (countA == 0)
+            {
+                self.winnerID = self.playerBID;
+                return true;
+            }
+            if (countB == 0)
+            {
+                self.winnerID = self.playerAID;
+                return true;
+            }
+
+            return false;
+        }
         #if SERVER
             public static int MovePiece(this DouShouQiBoardComponent self, long playerID, int sourceX, int sourceY, int destX, int destY)
             {
@@ -339,6 +369,21 @@ namespace ET
 
                 piece.isOpened = true;
                 self.curTurnPlayerID = GetOpponentPlayerID(self, playerID);
+                return ErrorCode.ERR_Success;
+            }
+            public static int Restart(this DouShouQiBoardComponent self)
+            {
+                if (!self.IsDouShouQiFinish())
+                {
+                    return ErrorCode.ERR_DouShouQIBoardNotExist;
+                }
+                for (int i = 0; i < self.Pieces.Count; i++)
+                {
+                    self.Pieces[i].Dispose();
+                }
+                self.Pieces.Clear();
+                self.winnerID = 0;
+                self.resetAllPlayerReady();
                 return ErrorCode.ERR_Success;
             }
         #endif

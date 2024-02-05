@@ -231,5 +231,9 @@ namespace ET
         {
             public Scene ZoneScene;
         }
+        public struct DouShouQiFinish
+        {
+            public Scene ZoneScene;
+        }
     }
 }

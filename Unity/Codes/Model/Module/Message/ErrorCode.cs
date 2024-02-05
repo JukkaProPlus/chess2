@@ -116,5 +116,6 @@ namespace ET
         public const int ERR_DouShouQiCanntEatUnknowPiece = 200063;
         public const int ERR_DouShouQiCanntOpenPieceNotExist = 200064;
         public const int ERR_DouShouQiPieceIsAlreadyOpend = 200065;
+        public const int ERR_DouShouQIBoardNotExist = 200066;
     }
 }

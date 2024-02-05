@@ -17,6 +17,12 @@ namespace ET
                 MessageHelper.SendToClient(playerA, m2C_DouShouQiPlayerChange);
                 MessageHelper.SendToClient(playerB, m2C_DouShouQiPlayerChange);
                 reply();
+                if (board.IsDouShouQiFinish())
+                {
+                    M2C_DouShouQiFinish m2C_DouShouQiFinish = new M2C_DouShouQiFinish() { winPlayerId = board.winnerID };
+                    MessageHelper.SendToClient(playerA, m2C_DouShouQiFinish);
+                    MessageHelper.SendToClient(playerB, m2C_DouShouQiFinish);
+                }
             }
             else
             {

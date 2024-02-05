@@ -11,6 +11,7 @@ namespace ET
         public long playerBID = 0;
         public bool playerAReady = false;
         public bool playerBReady = false;
+        public long winnerID = 0;
         /// <summary>
         /// 轮到这个玩家操作了
         /// </summary>

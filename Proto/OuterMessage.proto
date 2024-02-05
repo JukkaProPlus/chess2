@@ -771,6 +771,7 @@ message DouShouQiBoardProto
 	bool playerBReady = 5;
 	int64 curTurnPlayerID = 6;
 	repeated DouShouQiPieceProto Pieces = 7;
+	int64 winnerID = 8;
 }
 
 message M2C_EnterDouShouQiRoom // IActorLocationResponse
@@ -780,6 +781,20 @@ message M2C_EnterDouShouQiRoom // IActorLocationResponse
 	string Message = 92;
 	DouShouQiBoardProto Board = 1;
 }
+
+//ResponseType M2C_RestartDouShouQiRoom
+message C2M_RestartDouShouQiRoom	//IActorLocationRequest
+{
+	int32 RpcId = 90;
+}
+
+message M2C_RestartDouShouQiRoom	//IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
 //ResponseType M2C_LeaveDouShouQiRoom
 message C2M_LeaveDouShouQiRoom // IActorLocationRequest
 {
@@ -819,6 +834,10 @@ message M2C_PrepareNotice // IActorMessage
 {
 	long ReadyPlayerId = 1;
 	bool isPrepare = 2;
+}
+message M2C_DouShouQiFinish	// IActorMessage
+{
+	long winPlayerId = 1;
 }
 // message C2M_PrepareNotice // IActorLocationResponse
 // {
