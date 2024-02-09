@@ -14,6 +14,7 @@
             //     return;
             // }
             args.ZoneScene.GetComponent<UIComponent>().ShowWindow<DlgTip>();
+            await ETTask.CompletedTask;
         }
     }
     

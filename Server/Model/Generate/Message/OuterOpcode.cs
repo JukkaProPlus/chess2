@@ -115,5 +115,7 @@ namespace ET
 		 public const ushort M2C_AskAgreePeace = 10112;
 		 public const ushort C2M_ReplyPeaceApply = 10113;
 		 public const ushort M2C_ReplyPeaceApply = 10114;
+		 public const ushort C2R_ReloadDll = 10115;
+		 public const ushort R2C_ReloadDll = 10116;
 	}
 }
