@@ -1,11 +1,19 @@
-﻿using System.Linq;
+﻿// using System.Linq;
 namespace ET
 {
     public partial class DouShouQiPieceConfigCategory
     {
         public bool CanEat(DouShouQiPieceConfig self, DouShouQiPieceConfig other)
         {
-            return self.FoodIds.Contains(other.Id);
+            for (int i = 0; i < self.FoodIds.Length; i++)
+            {
+                if (self.FoodIds[i] == other.Id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
         public bool CanEat(DouShouQIPiece self, DouShouQIPiece other)
         {
