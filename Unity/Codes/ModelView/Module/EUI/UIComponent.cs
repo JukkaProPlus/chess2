@@ -19,7 +19,7 @@ namespace ET
         public Dictionary<int, UIBaseWindow> AllWindowsDic     = new Dictionary<int, UIBaseWindow>();
         public List<WindowID> UIBaseWindowlistCached           = new List<WindowID>();
         public Dictionary<int, UIBaseWindow> VisibleWindowsDic = new Dictionary<int, UIBaseWindow>();
-        public Queue<WindowID> StackWindowsQueue               = new Queue<WindowID>();
+        public Queue<int> StackWindowsQueue               = new Queue<int>();
         public bool IsPopStackWndStatus                        = false;
 
     }

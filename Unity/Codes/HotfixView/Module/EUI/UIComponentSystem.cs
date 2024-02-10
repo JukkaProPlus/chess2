@@ -118,7 +118,7 @@ namespace ET
         /// <param name="id"></param>
         public static void ShowStackWindow(this UIComponent self,WindowID id) 
         {
-           self.StackWindowsQueue.Enqueue(id);
+           self.StackWindowsQueue.Enqueue((int)id);
 
            if (self.IsPopStackWndStatus)
            {
@@ -136,7 +136,7 @@ namespace ET
         {
             if (self.StackWindowsQueue.Count > 0)
             {
-                WindowID windowID = self.StackWindowsQueue.Dequeue();
+                WindowID windowID = (WindowID)self.StackWindowsQueue.Dequeue();
                 self.ShowWindow(windowID);
                 UIBaseWindow uiBaseWindow = self.GetUIBaseWindow(windowID);
                 uiBaseWindow.IsInStackQueue = true;
