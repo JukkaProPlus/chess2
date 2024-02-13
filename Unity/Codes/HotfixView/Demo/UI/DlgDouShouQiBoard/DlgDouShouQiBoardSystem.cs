@@ -218,6 +218,7 @@ namespace ET
                 self.ESPieces[index].uiTransform.gameObject.SetActive(true);
                 self.ESPieces[index].E_LabelText.text = piece.isOpened ? LanguageHelper.GetLanguageString(DouShouQiPieceConfigCategory.Instance.Get(piece.PieceId).Name) : LanguageHelper.GetLanguageString(27);
                 self.ESPieces[index].E_SpriteImage.color = piece.isOpened ? (piece.OwnerId == myId ? Color.blue : Color.red) : Color.gray;
+                self.ESPieces[index].E_SpriteImage.overrideSprite = IconHelper.LoadIconSprite("Icons", DouShouQiPieceConfigCategory.Instance.Get(piece.PieceId).Icon);
                 self.ESPieces[index].E_SelectFlagImage.gameObject.SetActive(piece.IsSelected());
             }
             Log.Info("Refresh DlgDouShouQiBoard B");

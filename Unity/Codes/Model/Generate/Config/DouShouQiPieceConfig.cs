@@ -84,6 +84,9 @@ namespace ET
 		/// <summary>名字</summary>
 		[ProtoMember(3)]
 		public int Name { get; set; }
+		/// <summary>图片名字</summary>
+		[ProtoMember(4)]
+		public string Icon { get; set; }
 
 	}
 }
