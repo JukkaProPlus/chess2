@@ -6,6 +6,23 @@ namespace ET
 	[EnableMethod]
 	public  class ES_Piece : Entity,ET.IAwake<UnityEngine.Transform>,IDestroy 
 	{
+		public UnityEngine.UI.Image E_CampImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_CampImage == null )
+     			{
+		    		this.m_E_CampImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Camp");
+     			}
+     			return this.m_E_CampImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_SpriteImage
      	{
      		get
@@ -93,6 +110,7 @@ namespace ET
 
 		public void DestroyWidget()
 		{
+			this.m_E_CampImage = null;
 			this.m_E_SpriteImage = null;
 			this.m_E_SelectFlagImage = null;
 			this.m_E_LabelText = null;
@@ -101,6 +119,7 @@ namespace ET
 			this.uiTransform = null;
 		}
 
+		private UnityEngine.UI.Image m_E_CampImage = null;
 		private UnityEngine.UI.Image m_E_SpriteImage = null;
 		private UnityEngine.UI.Image m_E_SelectFlagImage = null;
 		private UnityEngine.UI.Text m_E_LabelText = null;
